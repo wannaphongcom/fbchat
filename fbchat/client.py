@@ -232,7 +232,7 @@ class Client(object):
         if not r.ok:
             return None
 
-        j = get_json(r.text)
+        print(r.text)
 
         for thread in j['payload']['threads']:
             t = Thread(**thread)
