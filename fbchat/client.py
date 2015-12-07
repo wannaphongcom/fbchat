@@ -231,9 +231,8 @@ class Client(object):
         r = self._post("https://www.facebook.com/ajax/mercury/threadlist_info.php", data)
         if not r.ok:
             return None
-        print(r.text)
+
         j = get_json(r.text)
-        print(j)
 
         for thread in j['payload']['threads']:
             t = Thread(**thread)
