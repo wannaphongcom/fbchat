@@ -2,6 +2,7 @@ import re
 import json
 from time import time
 from random import random, choice
+import chardet
 USER_AGENTS = [
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.90 Safari/537.36",
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_3) AppleWebKit/601.1.10 (KHTML, like Gecko) Version/8.0.5 Safari/601.1.10",
@@ -15,7 +16,8 @@ def now():
     return int(time()*1000)
 
 def get_json(text):
-	return json.loads(re.sub(r"for.*(.*;.*;.*).*;", '', text.encode('utf-8'), 1))
+	text = chardet.detect(text)
+	return json.loads(re.sub(r"for.*(.*;.*;.*).*;", '', text.encode(text[1]).decode("utf-8"), 1))
 
 def digit_to_char(digit):
     if digit < 10:
