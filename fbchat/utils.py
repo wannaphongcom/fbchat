@@ -16,7 +16,8 @@ def now():
     return int(time()*1000)
 
 def get_json(text):
-	print(type(text))
+	print(type(eval(text)))
+	print(eval(text))
 	return json.loads(re.sub(r"for.*(.*;.*;.*).*;", '', text.encode(text[1]).decode("utf-8"), 1))
 
 def digit_to_char(digit):
