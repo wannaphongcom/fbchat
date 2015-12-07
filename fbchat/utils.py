@@ -16,7 +16,7 @@ def now():
     return int(time()*1000)
 
 def get_json(text):
-	text = chardet.detect(text)
+	print(type(text))
 	return json.loads(re.sub(r"for.*(.*;.*;.*).*;", '', text.encode(text[1]).decode("utf-8"), 1))
 
 def digit_to_char(digit):
